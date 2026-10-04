@@ -1,0 +1,15 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+if [ -f "$HOME/.roblox_rejoin.pid" ]; then
+    PID=$(cat "$HOME/.roblox_rejoin.pid")
+
+    if kill -0 "$PID" 2>/dev/null; then
+        echo "Roblox Rejoin: RUNNING"
+        echo "PID: $PID"
+    else
+        echo "Roblox Rejoin: STOPPED"
+        rm -f "$HOME/.roblox_rejoin.pid"
+    fi
+else
+    echo "Roblox Rejoin: STOPPED"
+fi
