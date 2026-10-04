@@ -2,18 +2,41 @@
 
 REPO="https://raw.githubusercontent.com/arounxaillhc-cyber/Roblox-Rejoin/main"
 
-echo "Installing Roblox Rejoin..."
+echo "================================="
+echo " Roblox Rejoin Installer"
+echo "================================="
+echo ""
 
-curl -fsSL "$REPO/roblox_rejoin.sh" -o "$HOME/roblox_rejoin.sh"
+echo "[1/2] Checking requirements..."
 
-if [ ! -f "$HOME/roblox_rejoin.sh" ]; then
-    echo "Install failed."
-    exit 1
+if ! command -v curl >/dev/null 2>&1; then
+    echo "Installing curl..."
+    pkg install curl -y
 fi
 
-chmod +x "$HOME/roblox_rejoin.sh"
+echo "[2/2] Downloading files..."
+
+curl -fsSL "$REPO/roblox_rejoin.sh" -o "$HOME/roblox_rejoin.sh"
+curl -fsSL "$REPO/start" -o "$HOME/start"
+curl -fsSL "$REPO/stop" -o "$HOME/stop"
+curl -fsSL "$REPO/update" -o "$HOME/update"
+curl -fsSL "$REPO/status" -o "$HOME/status"
+
+chmod +x \
+    "$HOME/roblox_rejoin.sh" \
+    "$HOME/start" \
+    "$HOME/stop" \
+    "$HOME/update" \
+    "$HOME/status"
 
 echo ""
-echo "Installation complete!"
-echo "Run:"
-echo "  ~/roblox_rejoin.sh"
+echo "================================="
+echo " Installation complete!"
+echo "================================="
+echo ""
+echo "Commands:"
+echo "  start  - Start Roblox Rejoin"
+echo "  stop   - Stop Roblox Rejoin"
+echo "  update - Update from GitHub"
+echo "  status - Check status"
+echo ""
