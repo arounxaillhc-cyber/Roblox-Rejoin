@@ -1,0 +1,11 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+if [ -f "$HOME/.roblox_rejoin.pid" ] && kill -0 "$(cat "$HOME/.roblox_rejoin.pid")" 2>/dev/null; then
+    echo "Roblox Rejoin is already running."
+    exit 0
+fi
+
+nohup "$HOME/roblox_rejoin.sh" > "$HOME/roblox_rejoin.log" 2>&1 &
+echo $! > "$HOME/.roblox_rejoin.pid"
+
+echo "Roblox Rejoin started."
