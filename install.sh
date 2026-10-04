@@ -29,6 +29,14 @@ chmod +x \
     "$HOME/update" \
     "$HOME/status"
 
+# เพิ่ม Home เข้า PATH
+if ! grep -qxF 'export PATH="$HOME:$PATH"' "$HOME/.bashrc"; then
+    echo 'export PATH="$HOME:$PATH"' >> "$HOME/.bashrc"
+fi
+
+# ใช้งาน PATH ทันทีโดยไม่ต้องเปิด Termux ใหม่
+export PATH="$HOME:$PATH"
+
 echo ""
 echo "================================="
 echo " Installation complete!"
