@@ -1,0 +1,19 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+REPO="https://raw.githubusercontent.com/arounxaillhc-cyber/Roblox-Rejoin/main"
+
+echo "Installing Roblox Rejoin..."
+
+curl -fsSL "$REPO/roblox_rejoin.sh" -o "$HOME/roblox_rejoin.sh"
+
+if [ ! -f "$HOME/roblox_rejoin.sh" ]; then
+    echo "Install failed."
+    exit 1
+fi
+
+chmod +x "$HOME/roblox_rejoin.sh"
+
+echo ""
+echo "Installation complete!"
+echo "Run:"
+echo "  ~/roblox_rejoin.sh"
